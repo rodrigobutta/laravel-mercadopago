@@ -31,7 +31,7 @@ class MercadoPago
 
         # Create an item object
         $item = new Item();
-        $item->id = $order->uuid;
+        $item->id = $order->id;
         $item->title = $order->title;
         $item->quantity = 1;
         $item->currency_id = 'ARS';
@@ -43,7 +43,6 @@ class MercadoPago
         $payer->email = $order->preorder->billing_email;
         $payer->name = "Charles";
         $payer->surname = "Luevano";
-        $payer->email = "charles@hotmail.com";
         $payer->date_created = "2018-06-02T12:58:41.425-04:00";
         $payer->phone = array(
             "area_code" => "",
@@ -60,13 +59,13 @@ class MercadoPago
         );
 
 
-        
+
         # Setting preference properties
         $preference->items = [$item];
         $preference->payer = $payer;
 
         # Save External Reference
-        $preference->external_reference = $order->uuid;
+        $preference->external_reference = $order->id;
         $preference->back_urls = [
             "success" => route('checkout.thanks'),
             "pending" => route('checkout.pending'),

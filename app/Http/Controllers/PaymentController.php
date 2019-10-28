@@ -9,7 +9,6 @@ use App\PreOrder;
 
 class PaymentController extends Controller
 {
-    
 
     public function pay(Request $request)
     {        
@@ -17,6 +16,8 @@ class PaymentController extends Controller
         $preOrder = new PreOrder();
 
         $preOrder->billing_email = "rbutta@gmail.com";
+
+        $preOrder->save();
         
         return $this->createOrder($preOrder, $request);    
     }
@@ -61,9 +62,7 @@ class PaymentController extends Controller
 
     protected function setUpOrder(PreOrder $preOrder, Request $request) : Order
     {
-        $order = new \App\Order;
-
-        dd($order);
+        $order = new Order;
 
         $order->preorder()->associate($preOrder);
 
@@ -71,7 +70,10 @@ class PaymentController extends Controller
         $order->total_price = 100;
         $order->featured_img = "https://laravel.com/img/logomark.min.svg";
 
+        $order->save();    
         
+        
+        // dd($order);
 
 
         return $order;

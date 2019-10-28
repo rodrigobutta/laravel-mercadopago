@@ -68,9 +68,20 @@
          
             <div class="content">
                 <div class="title m-b-md">
-                    Thanks
+                    Pago hecho OK!!
                 </div>
-
+                <div class=" m-b-md">
+                    <strong>ORDER ID</strong> {{$order_id}}
+                </div>
+                <div class=" m-b-md">
+                    <strong>COLLECTION ID</strong> {{$collection_id}}
+                </div>
+                <div class=" m-b-md">
+                    <strong>PREFERENCE ID</strong> {{$preference_id}}
+                </div>
+                <div class=" m-b-md">
+                    <strong>MERCHAN ORDER ID</strong> {{$merchant_order_id}}
+                </div>
             </div>
         </div>
     </body>
